@@ -1,0 +1,35 @@
+# Ignored files for PHP projects
+
+# Composer-related
+/vendor/
+composer.lock
+
+# Environment/Configuration files (potentially sensitive data)
+.env
+config.php # If it contains database credentials or API keys.
+           # If you use config.example.php, make sure config.php is ignored here.
+
+# Logs
+*.log
+/logs/
+
+# Cache/Temporary files
+*.tmp
+*.temp
+/cache/
+/temp/
+
+# Operating System generated files
+.DS_Store # macOS
+Thumbs.db # Windows
+desktop.ini # Windows
+
+# IDE-specific files (e.g., VS Code, PHPStorm)
+.vscode/
+.idea/
+*.iml
+*.iwr
+*.ipr
+
+# Uploaded files (if your application handles user uploads)
+/public/uploads/ # Or wherever your uploads folder is
