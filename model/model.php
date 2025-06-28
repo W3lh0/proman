@@ -41,7 +41,17 @@ function get_all_tasks()
     try {
         global $connection;
 
-        $sql = 'SELECT * FROM tasks ORDER BY title';
+        $sql = 'SELECT
+                    T.title AS TaskTitle,
+                    P.title AS ProjectTitle,
+                    T.data_task
+                FROM
+                    tasks AS T
+                INNER JOIN
+                    projects AS P ON T.project_id = P.id
+                ORDER BY
+                    P.title ASC,
+                    T.data_task DESC';
         $tasks = $connection->query($sql);
 
         return $tasks;

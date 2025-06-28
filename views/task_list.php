@@ -20,7 +20,7 @@ require 'nav.php';
     <ul>
         <?php foreach ($tasks as $task) : ?>
         <li>
-            <?php echo $task["title"] ?>
+            Title: <?php echo htmlspecialchars($task["TaskTitle"]); ?> (Date: <?php echo htmlspecialchars($task["data_task"]); ?>, Project: <?php echo htmlspecialchars($task["ProjectTitle"]); ?>)
         </li>
         <?php endforeach; ?>
     </ul>
