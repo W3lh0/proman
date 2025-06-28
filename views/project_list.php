@@ -9,7 +9,7 @@ require 'nav.php';
     <p><a href="../">Go Home</a></p>
 
     <h1><?php echo $title . " (" . $projectCount . ")" ?></h1>
-    <!-- if there's not data yet -->
+    <!-- if there's no data yet -->
     <?php if ($projectCount == 0) { ?>
     <div>
         <p> You have not yet added any projects </p>
