@@ -35,3 +35,18 @@ function get_all_projects_count()
         exit;
     }
 }
+
+function get_all_tasks()
+{
+    try {
+        global $connection;
+
+        $sql = 'SELECT * FROM tasks ORDER BY title';
+        $tasks = $connection->query($sql);
+
+        return $tasks;
+    } catch (PDOException $err) {
+        echo $sql . "<br>" . $err->getMessage();
+        exit;
+    }
+}
