@@ -77,3 +77,21 @@ function get_all_tasks_count()
         exit;
     }
 }
+
+function add_project($title, $category) {
+    try {
+        global $connection;
+
+        $sql = 'INSERT INTO projects(title, category) VALUES(?, ?)';
+
+        $statement = $connection->prepare($sql);
+        $new_project = array($title, $category);
+
+        $affectedLines = $statement->execute($new_project);
+
+        return $affectedLines;
+    } catch (PDOException) {
+        echo $sql . "<br" . $err->getMessage();
+        exit;
+    }
+}
