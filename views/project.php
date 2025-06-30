@@ -1,4 +1,7 @@
 <?php
+
+require_once '../utils/common.php';
+
 $title = 'Add Project';
 
 ob_start();
@@ -7,11 +10,11 @@ require "nav.php";
 
 <div class="container">
 
-    <h1><?php echo $title ?></h1>
+    <h1><?php echo escape($title) ?></h1>
 
     <?php
     if (isset($error_message)) {
-        echo "<p class='message_error'>$error_message</p>";
+        echo "<p class='message_error'>" . escape($error_message) . "</p>";
     }
 
     if (isset($confirm_message)) {
