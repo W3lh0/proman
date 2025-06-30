@@ -84,3 +84,41 @@ nav ul {
     background: yellow;
   }
   
+  .container ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .container ol {
+    padding-left: 20px;
+    margin: 20px 0;
+  }
+
+  .container li {
+    line-height: 1.6;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+  }
+
+  .container li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .container li:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+
+  .container li a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  .container li a:hover {
+    text-decoration: underline;
+  }
