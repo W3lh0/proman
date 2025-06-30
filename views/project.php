@@ -18,7 +18,7 @@ require "nav.php";
     }
 
     if (isset($confirm_message)) {
-        echo "<p class='message_ok'>$confirm_message</p>";
+        echo "<p class='message_ok'>" . escape($confirm_message) . "</p>";
     }
     ?>
 
