@@ -1,3 +1,7 @@
+<?php
+require_once '../utils/common.php';
+?>
+
 <!DOCTYPE html>
 <html lang=eng>
 
@@ -6,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/styles.css">
     <link rel="stylesheet" href="../public/css/styles.css">
-    <title><?php echo $title ?></title>
+    <title><?php echo escape($title) ?></title>
 </head>
 
 <body>
