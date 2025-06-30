@@ -95,3 +95,21 @@ function add_project($title, $category) {
         exit;
     }
 }
+
+function titleExists($table, $title)
+{
+    try {
+        global $connection;
+
+        $sql = 'SELECT title FROM ' . $table . 'WHERE title = ?';
+        $statement = $connection->prepare($sql);
+        $statement->execute(array($title));
+
+        if ($statement->rowCount() > 0) {
+            return true;
+        }
+    } catch (PDOException $exception) {
+        echo $sql . "<br>" . $exception->getMessage();
+        exit;
+    }
+}
