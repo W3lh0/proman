@@ -8,9 +8,14 @@ if (isset($_POST['submit'])) {
     if (empty($title) || empty($category)) {
         $error_message = "Title or category empty";
     } else {
-        add_project($title, $category);
-        header('Refresh:4; url=project_list.php');
-        $confirm_message = 'Project added successfully! Moving to project list..';
+        if (titleExists("projects", $title)) {
+            $error_message = "I'm sorry, but looks like \"" . $title . "\" already exists";
+
+        } else {
+            add_project($title, $category);
+            header('Refresh:4; url=project_list.php');
+            $confirm_message = 'Project added successfully! Moving to project list..';
+        }
     }
 }
 
