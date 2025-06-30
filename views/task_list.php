@@ -1,4 +1,7 @@
 <?php
+
+require_once '../utils/common.php';
+
 $title = 'Task list';
 
 ob_start();
@@ -8,7 +11,7 @@ require 'nav.php';
 <div class="container">
     <p><a href="../">Go Home</a></p>
 
-    <h1><?php echo $title . " (" . $taskCount . ")" ?></h1>
+    <h1><?php echo escape($title) . " (" . escape($taskCount) . ")" ?></h1>
     <!-- if there is no data yet -->
     <?php if ($taskCount == 0) { ?>
     <div>
@@ -20,7 +23,7 @@ require 'nav.php';
     <ul>
         <?php foreach ($tasks as $task) : ?>
         <li>
-            Title: <?php echo htmlspecialchars($task["TaskTitle"]); ?> (Date: <?php echo htmlspecialchars($task["data_task"]); ?>, Project: <?php echo htmlspecialchars($task["ProjectTitle"]); ?>)
+            Title: <?php echo escape($task["TaskTitle"]); ?> (Date: <?php echo escape($task["data_task"]); ?>, Project: <?php echo escape($task["ProjectTitle"]); ?>)
         </li>
         <?php endforeach; ?>
     </ul>
