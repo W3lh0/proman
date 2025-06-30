@@ -90,7 +90,7 @@ function add_project($title, $category) {
         $affectedLines = $statement->execute($new_project);
 
         return $affectedLines;
-    } catch (PDOException) {
+    } catch (PDOException $err) {
         echo $sql . "<br" . $err->getMessage();
         exit;
     }
