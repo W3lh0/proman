@@ -96,6 +96,24 @@ function add_project($title, $category) {
     }
 }
 
+function add_task($title, $dataTask, $titleTask) {
+    try {
+        global $connection;
+
+        $sql = 'INSERT INTO task(title, data_task, time_task) VALUES(?, ?, ?)';
+
+        $statement = $connection->prepare($sql);
+        $new_project = array($title, $dataTask, $titleTask);
+
+        $affectedLines = $statement->execute($new_project);
+        
+        return $affectedLines;
+    } catch (PDOException $err) {
+        echo $sql . "<br>" . $err->getMessage();
+        exit;
+    }
+}
+
 function titleExists($table, $title)
 {
     try {
