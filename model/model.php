@@ -119,7 +119,7 @@ function titleExists($table, $title)
     try {
         global $connection;
 
-        $sql = 'SELECT title FROM ' . $table . 'WHERE title = ?';
+        $sql = 'SELECT title FROM ' . $table . ' WHERE title = ?';
         $statement = $connection->prepare($sql);
         $statement->execute(array($title));
 
