@@ -3,8 +3,8 @@ require_once "../model/model.php";
 
 if (isset($_POST['submit'])) {
     $title = trim($_POST['title']);
-    $dataTask = trim($_POST['data_task']);
-    $timeTask = $_POST['time_task'];
+    $dataTask = trim($_POST['dataTask']);
+    $timeTask = $_POST['timeTask'];
 
     if (empty($title) || empty($dataTask) || empty($timeTask)) {
         $error_message = "Title, dataTask or timeTask empty";
