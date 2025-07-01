@@ -96,14 +96,14 @@ function add_project($title, $category) {
     }
 }
 
-function add_task($title, $dataTask, $titleTask) {
+function add_task($title, $dataTask, $titleTask, $projectId) {
     try {
         global $connection;
 
-        $sql = 'INSERT INTO tasks(title, data_task, time_task) VALUES(?, ?, ?)';
+        $sql = 'INSERT INTO tasks(title, data_task, time_task, project_id) VALUES(?, ?, ?, ?)';
 
         $statement = $connection->prepare($sql);
-        $new_project = array($title, $dataTask, $titleTask);
+        $new_project = array($title, $dataTask, $titleTask, $projectId);
 
         $affectedLines = $statement->execute($new_project);
         
