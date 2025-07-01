@@ -45,6 +45,7 @@ require "nav.php";
             <strong><abbr title="required">*</abbr></strong>
         </label>
         <select name="projectId" id="projectId" required>
+            <option value="" disable selected hidden>Select a project</option>
             <?php foreach ($projects as $project): ?>
                 <option value="<?php  echo escape($project['id']); ?>">
                     <?php echo escape($project['title']); ?>
