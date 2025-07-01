@@ -100,7 +100,7 @@ function add_task($title, $dataTask, $titleTask) {
     try {
         global $connection;
 
-        $sql = 'INSERT INTO task(title, data_task, time_task) VALUES(?, ?, ?)';
+        $sql = 'INSERT INTO tasks(title, data_task, time_task) VALUES(?, ?, ?)';
 
         $statement = $connection->prepare($sql);
         $new_project = array($title, $dataTask, $titleTask);
