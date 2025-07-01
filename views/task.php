@@ -1,8 +1,10 @@
 <?php
 
 require_once "../utils/common.php";
+require_once "../model/model.php";
 
 $title = "Add Task";
+$projects = get_all_projects();
 
 ob_start();
 require "nav.php";
@@ -37,7 +39,18 @@ require "nav.php";
             <span>Task Time</span>
             <strong><abbr title="required">*</abbr></strong>
         </label>
-        <input type="number" name="timeTask" id="timeTask" min="1" max="120" step="1" required>
+        <input type="number" name="timeTask" id="timeTask" min="1" max="120" step="1" required> 
+        <label for="projectId">
+            <span>Project</span>
+            <strong><abbr title="required">*</abbr></strong>
+        </label>
+        <select name="projectId" id="projectId" required>
+            <?php foreach ($projects as $project): ?>
+                <option value="<?php  echo escape($project['id']); ?>">
+                    <?php echo escape($project['title']); ?>
+                </option>
+            <?php endforeach; ?>
+        <select>
         <input type="submit" name="submit" value="add">
     </form>
 </div>
