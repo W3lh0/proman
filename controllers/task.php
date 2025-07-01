@@ -5,15 +5,16 @@ if (isset($_POST['submit'])) {
     $title = trim($_POST['title']);
     $dataTask = trim($_POST['dataTask']);
     $timeTask = $_POST['timeTask'];
+    $projectId = $_POST['projectId'];
 
-    if (empty($title) || empty($dataTask) || empty($timeTask)) {
-        $error_message = "Title, dataTask or timeTask empty";
+    if (empty($title) || empty($dataTask) || empty($timeTask) || empty($projectId) ) {
+        $error_message = "One or more fields are empty";
     } else {
         if (titleExists("tasks", $title)) {
             $error_message = "I'm sorry, but looks like \"" . $title . "\" already exists.";
 
         } else {
-            add_task($title, $dataTask, $timeTask);
+            add_task($title, $dataTask, $timeTask, $projectId);
             header('Refresh:4; url=task_list.php');
             $confirm_message = 'Task added successfully! Moving to task list..';
         }
