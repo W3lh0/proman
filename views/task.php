@@ -1,6 +1,6 @@
 <?php
 
-require_once "..utils/common.php";
+require_once "../utils/common.php";
 
 $title = "Add Task";
 
@@ -29,15 +29,15 @@ require "nav.php";
         </label>
         <input type="text" placeholder="New task" name="title" id="title" required>
         <label for="dataTask">
-            <span>Task Data:</span>
+            <span>Task Date:</span>
             <strong><abbr title="required">*</abbr></strong>
         </label>
-        <input type="text" placeholder="New Task Data" name="dataTask" id="dataTask" required>
+        <input type="date" name="dataTask" id="dataTask" required>
         <label for="timeTask">
             <span>Task Time</span>
             <strong><abbr title="required">*</abbr></strong>
         </label>
-        <input type="date" name="timeTask" id="timeTask">
+        <input type="number" name="timeTask" id="timeTask" min="1" max="120" step="1" required>
         <input type="submit" name="submit" value="add">
     </form>
 </div>
