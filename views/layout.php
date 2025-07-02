@@ -3,7 +3,7 @@ require_once __DIR__ . '/../utils/common.php';
 ?>
 
 <!DOCTYPE html>
-<html lang=eng>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -16,4 +16,4 @@ require_once __DIR__ . '/../utils/common.php';
     <?php echo $content ?>
 </body>
 
-<html>
+</html>
