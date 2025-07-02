@@ -12,7 +12,6 @@ if (isset($_GET['id'])) {
 if (isset($_POST['submit'])) {
     $title = trim($_POST['title']);
     $category = $_POST['category'];
-
     $id = null;
 
     if (isset($_POST['id'])) {
@@ -38,3 +37,5 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+require "../views/project.php";
