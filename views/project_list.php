@@ -23,7 +23,7 @@ require 'nav.php';
     <ul>
         <?php foreach ($projects as $project) : ?>
         <li>
-            <a href="../controllers/project.php?id=<?php escape($project['id']); ?>">
+            <a href="../controllers/project.php?id=<?php echo escape($project['id']); ?>">
                 <?php echo escape($project["title"]); ?>
             </a>
         </li>
