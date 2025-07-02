@@ -78,6 +78,23 @@ function get_all_tasks()
     }
 }
 
+function get_task($id)
+{
+    try {
+        global $connection;
+
+        $sql = 'SELECT * FROM tasks WHERE id = ?';
+        $project = $connection->prepare($sql);
+        $project->bindValue(1, $id, PDO::PARAM_INT);
+        $project->execute();
+
+        return $project->fetch();
+    } catch (PDOException $exception) {
+        echo $sql . "<br>" . $exception->getMessage();
+        exit;
+    }
+}
+
 function get_all_tasks_count()
 {
     try {
@@ -120,15 +137,22 @@ function add_project($title, $category, $id) {
     }
 }
 
-function add_task($title, $dataTask, $titleTask, $projectId) 
+function add_task($title, $dataTask, $timeTask, $projectId, $id) 
 {
     try {
         global $connection;
 
-        $sql = 'INSERT INTO tasks(title, data_task, time_task, project_id) VALUES(?, ?, ?, ?)';
-
+        if ($id) {
+            $sql = 'UPDATE tasks SET title = ?, data_task = ?, time_task = ? WHERE id = ?';
+        } else {
+            $sql = 'INSERT INTO tasks(title, data_task, time_task, project_id) VALUES(?, ?, ?, ?)';
+        }
         $statement = $connection->prepare($sql);
         $new_project = array($title, $dataTask, $titleTask, $projectId);
+
+        if ($id) {
+            $new_project = array($title, $dataTask, $timeTask, $id);
+        }
 
         $affectedLines = $statement->execute($new_project);
         
