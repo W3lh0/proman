@@ -143,14 +143,25 @@ function delete_project($id)
     try {
         global $connection;
 
-        $sql = 'DELETE FROM projects WHERE id = ?';
-        $project = $connection->prepare($sql);
-        $project->bindValue(1, $id, PDO::PARAM_INT);
-        $project->execute();
+        $connection->beginTransaction();
+
+        $sql_delete_task = 'DELETE FROM tasks WHERE project_id = ?';
+        $statement_task = $connection->prepare($sql_delete_task);
+        $statement_task->bindValue(1, $id, PDO::PARAM_INT);
+        $statement_task->execute();
+
+        $sql_delete_project = 'DELETE FROM projects WHERE id = ?';
+        $statement_project = $connection->prepare($sql_delete_project);
+        $statement_project->bindValue(1, $id, PDO::PARAM_INT);
+        $statement_project->execute();
+
+        $connection->commit();
 
         return true;
     } catch (PDOException $exception) {
-        echo $sql . "<br>" . $exception->getMessage();
+        $connection->rollBack();
+        error_log("Error deleting project and task: " . $exception->getMessage());
+        echo $sql_delete_project . "<br>" . $exception->getMessage();
         exit;
     }
 
