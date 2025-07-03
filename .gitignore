@@ -6,8 +6,8 @@ composer.lock
 
 # Environment/Configuration files (potentially sensitive data)
 .env
-**/config.php   # If it contains database credentials or API keys.
-model/config.php               # If you use config.example.php, make sure config.php is ignored here.
+model/config.php  # If it contains database credentials or API keys.
+                  # If you use config.example.php, make sure config.php is ignored here.
 
 # Logs
 *.log
