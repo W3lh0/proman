@@ -164,6 +164,24 @@ function add_task($title, $dataTask, $timeTask, $projectId, $id)
     }
 }
 
+function delete_task($id) 
+{
+    try {
+        global $connection;
+
+        $sql = 'DELETE FROM tasks WHERE id = ?';
+        $task = $connection->prepare($sql);
+        $task->bindValue(1, $id, PDO::PARAM_INT);
+        $task->execute();
+
+        return true;
+    } catch (PDOException $exception) {
+        echo $sql . "<br>" . $exception->getMessage();
+        exit;
+    }
+
+}
+
 function titleExists($table, $title)
 {
     try {
