@@ -43,18 +43,22 @@ require "nav.php";
             <strong><abbr title="required">*</abbr></strong>
         </label>
         <input type="number" name="timeTask" id="timeTask" min="1" max="120" step="1" value="<?php echo escape($time_task) ?>" required> 
-        <label for="projectId">
-            <span>Project</span>
-            <strong><abbr title="required">*</abbr></strong>
-        </label>
-        <select name="projectId" id="projectId" required>
-            <option value="" disable selected hidden>Select a project</option>
-            <?php foreach ($projects as $project): ?>
-                <option value="<?php echo escape($project['id']); ?>">
-                    <?php echo escape($project['title']); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <?php if (empty($id)) { ?>
+            <label for="projectId">
+                <span>Project</span>
+                <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <select name="projectId" id="projectId" required>
+                <option value="" disable selected hidden>Select a project</option>
+                    <?php foreach ($projects as $project): ?>
+                        <option value="<?php echo escape($project['id']); ?>">
+                            <?php echo escape($project['title']); ?>
+                <       /option>
+                    <?php endforeach; ?>
+            </select>
+        <?php } else { ?>
+            <input type="hidden" name="projectId" value="<?php echo escape($project_id); ?>">
+        <?php } ?>
         <?php if (!empty($id)) { ?>
         <input type="hidden" name="id" value="<?php echo escape($id) ?>" />      
         <?php } ?>
