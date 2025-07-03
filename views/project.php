@@ -46,6 +46,9 @@ require "nav.php";
         <input type="hidden" name="id" value="<?php echo escape($id) ?>" />
         <?php } ?>
         <input type="submit" name="submit" value="<?php echo (isset($id) and (!empty($id))) ? 'Update' : 'Add'; ?>">
+        <?php if (!empty($id)) { ?>
+        <input type="submit" name="deleteButton" value="Delete" />
+        <?php } ?>
     </form>
 </div>
 
