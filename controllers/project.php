@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 
     if (!empty($id)) {
         if (delete_project($id)) {
-            header('Refresh:4; url:project_list.php');
+            header('Refresh:4; url=project_list.php');
             $confirm_message = "Project deleted succesfully.";
         } else {
             $error_message = "Can't delete project.";
