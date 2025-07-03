@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         $id = $_POST['id'];
     }
 
-    if (empty($title) || empty($dataTask) || empty($timeTask) || empty($projectId) ) {
+    if (empty($title) || empty($dataTask) || empty($timeTask) || empty($projectId && $id == null) ) {
         $error_message = "One or more fields are empty";
     } else {
         if (titleExists("tasks", $title) && $id == null) {
