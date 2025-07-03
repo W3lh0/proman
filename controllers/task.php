@@ -40,6 +40,23 @@ if (isset($_POST['submit'])) {
             }
         }
     }
+} elseif (isset($_POST['deleteButton'])) {
+    $id = null;
+
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];
+    }
+
+    if (!empty($id)) {
+        if (delete_task($id)) {
+            header('Refresh:4; url=task_list.php');
+            $confirm_message = "Task deleted succesfully.";
+        } else {
+            $error_message = "Can't delete task.";
+        }
+    } else {
+        $error_message = "Task you want to delete not deffined correctly.";
+    }
 }
 
 require "../views/task.php";
