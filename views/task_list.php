@@ -1,4 +1,3 @@
-views/_task_list.php
 <?php
 require_once '../utils/common.php';
 
@@ -8,7 +7,7 @@ ob_start();
 require 'nav.php';
 ?>
 <div class="container">
-  <p><a href="../../">Go Home</a></p>
+  <p><a href="../">Go Home</a></p>
 
   <h1><?php echo escape($title) . " (" . escape($taskCount) . ")"; ?></h1>
   <!-- If there is no data yet -->
