@@ -59,6 +59,7 @@ function get_all_tasks()
         global $connection;
 
         $sql = 'SELECT
+                    T.id AS id,
                     T.title AS TaskTitle,
                     P.title AS ProjectTitle,
                     T.data_task
