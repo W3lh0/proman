@@ -53,7 +53,7 @@ require "nav.php";
                     <?php foreach ($projects as $project): ?>
                         <option value="<?php echo escape($project['id']); ?>">
                             <?php echo escape($project['title']); ?>
-                <       /option>
+                        </option>
                     <?php endforeach; ?>
             </select>
         <?php } else { ?>
