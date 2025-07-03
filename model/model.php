@@ -138,6 +138,24 @@ function add_project($title, $category, $id) {
     }
 }
 
+function delete_project($id) 
+{
+    try {
+        global $connection;
+
+        $sql = 'DELETE FROM projects WHERE id = ?';
+        $project = $connection->prepare($sql);
+        $project->bindValue(1, $id, PDO::PARAM_INT);
+        $project->execute();
+
+        return true;
+    } catch (PDOException $exception) {
+        echo $sql . "<br>" . $exception->getMessage();
+        exit;
+    }
+
+}
+
 function add_task($title, $dataTask, $timeTask, $projectId, $id) 
 {
     try {
