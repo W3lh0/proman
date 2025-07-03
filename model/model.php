@@ -149,7 +149,7 @@ function add_task($title, $dataTask, $timeTask, $projectId, $id)
             $sql = 'INSERT INTO tasks(title, data_task, time_task, project_id) VALUES(?, ?, ?, ?)';
         }
         $statement = $connection->prepare($sql);
-        $new_project = array($title, $dataTask, $titleTask, $projectId);
+        $new_project = array($title, $dataTask, $timeTask, $projectId);
 
         if ($id) {
             $new_project = array($title, $dataTask, $timeTask, $id);
