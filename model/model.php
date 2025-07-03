@@ -85,11 +85,11 @@ function get_task($id)
         global $connection;
 
         $sql = 'SELECT * FROM tasks WHERE id = ?';
-        $project = $connection->prepare($sql);
-        $project->bindValue(1, $id, PDO::PARAM_INT);
-        $project->execute();
+        $task = $connection->prepare($sql);
+        $task->bindValue(1, $id, PDO::PARAM_INT);
+        $task->execute();
 
-        return $project->fetch();
+        return $task->fetch();
     } catch (PDOException $exception) {
         echo $sql . "<br>" . $exception->getMessage();
         exit;

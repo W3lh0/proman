@@ -1,10 +1,13 @@
 <?php
+if (!empty($_GET['id'])) {
+    $title = 'Update Task'; 
+} else {
+    $title = 'Add Task'; 
+}
 
 require_once "../utils/common.php";
-require_once "../model/model.php";
 
-$title = "Add Task";
-$projects = get_all_projects();
+$projects = get_all_projects(); 
 
 ob_start();
 require "nav.php";
@@ -29,17 +32,17 @@ require "nav.php";
             <span>Title:</span>
             <strong><abbr title="required">*</abbr></strong>
         </label>
-        <input type="text" placeholder="New task" name="title" id="title" required>
+        <input type="text" placeholder="New task" name="title" id="title" value="<?php echo escape($task_title); ?>" required>
         <label for="dataTask">
             <span>Task Date:</span>
             <strong><abbr title="required">*</abbr></strong>
         </label>
-        <input type="date" name="dataTask" id="dataTask" required>
+        <input type="date" name="dataTask" id="dataTask" value="<?php echo escape($data_task); ?>" required>
         <label for="timeTask">
             <span>Task Time</span>
             <strong><abbr title="required">*</abbr></strong>
         </label>
-        <input type="number" name="timeTask" id="timeTask" min="1" max="120" step="1" required> 
+        <input type="number" name="timeTask" id="timeTask" min="1" max="120" step="1" value="<?php echo escape($time_task) ?>" required> 
         <label for="projectId">
             <span>Project</span>
             <strong><abbr title="required">*</abbr></strong>
@@ -47,12 +50,15 @@ require "nav.php";
         <select name="projectId" id="projectId" required>
             <option value="" disable selected hidden>Select a project</option>
             <?php foreach ($projects as $project): ?>
-                <option value="<?php  echo escape($project['id']); ?>">
+                <option value="<?php echo escape($project['id']); ?>">
                     <?php echo escape($project['title']); ?>
                 </option>
             <?php endforeach; ?>
-        <select>
-        <input type="submit" name="submit" value="add">
+        </select>
+        <?php if (!empty($id)) { ?>
+        <input type="hidden" name="id" value="<?php echo escape($id) ?>" />      
+        <?php } ?>
+        <input type="submit" name="submit" value="<?php echo (isset($id) and (!empty($id))) ? 'Update' : 'Add'; ?>">
     </form>
 </div>
 

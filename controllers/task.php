@@ -3,9 +3,12 @@ require_once "../model/model.php";
 require "../utils/common.php";
 
 $task_title = '';
+$data_task = '';
+$time_task = '';
+$project_id = '';
 
 if (isset($_GET['id'])) {
-    list($id, $task_title, $data_task, $time_task, $project_id) = get_task($_GET['id']);
+    list($id, $task_title, $data_task, $time_task, $project_id) = get_task($_GET['id']);;
 }
 
 if (isset($_POST['submit'])) {

@@ -21,6 +21,7 @@ require 'nav.php';
   <ul>
   <?php foreach ($tasks as $task) : ?>
     <li>
+      <?php echo "Task ID: " . $task['id'] . " - "; ?>
         <a href="../controllers/task.php?id=<?php echo $task['id']; ?>">
             Title: <?php echo escape($task["TaskTitle"]); ?> (Date: <?php echo escape($task["data_task"]); ?>), Project: <?php echo escape($task["ProjectTitle"]); ?>
         </a>
