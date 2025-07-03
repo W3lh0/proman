@@ -1,6 +1,6 @@
 views/_task_list.php
 <?php
-require_once './utils/common.php';
+require_once '../utils/common.php';
 
 $title = 'Task list';
 
