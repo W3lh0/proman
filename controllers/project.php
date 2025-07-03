@@ -36,6 +36,23 @@ if (isset($_POST['submit'])) {
             }
         }
     }
+} elseif (isset($_POST['deleteButton'])) {
+    $id = null;
+
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];
+    }
+
+    if (!empty($id)) {
+        if (delete_project($id)) {
+            header('Refresh:4; url:project_list.php');
+            $confirm_message = "Project deleted succesfully.";
+        } else {
+            $error_message = "Can't delete project.";
+        }
+    } else {
+        $error_message = "Project you want to delete not deffined correctly.";
+    }
 }
 
 require "../views/project.php";
